@@ -1,0 +1,16 @@
+
+{% extends 'todo_list2.html' %}
+{% block content %}
+<center>
+    <h1>List-of-Todo</h1>
+    {% if request.user.is_authenticated %}
+        Hello {{request.user.username}}
+    {% else %}
+        Hello anonymous user
+    {% endif %} <br>
+    <a href="/create">Create a todo</a>
+    {% for todo in todo_list %}
+            <li><a href="/{{todo.id}}">{{ todo.taskname }}</a>, it's due {{todo.due_date}}</li>
+        {% endfor %}
+</center>
+{% endblock %}
